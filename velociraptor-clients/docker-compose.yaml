@@ -1,0 +1,26 @@
+services:
+  client-1:
+    build:
+      context: .
+    container_name: client-1
+    image: velociraptor_linux_client:latest
+    restart: unless-stopped
+    networks:
+      - velociraptor-server_default
+      - dfir-stego-hub_gateway
+    
+  client-2:
+    build:
+      context: .
+    container_name: client-2
+    image: velociraptor_linux_client:latest
+    restart: unless-stopped
+    networks:
+      - velociraptor-server_default
+      - dfir-stego-hub_gateway
+      
+networks:
+  dfir-stego-hub_gateway:
+    external: true
+  velociraptor-server_default:
+    external: true
